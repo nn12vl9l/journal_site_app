@@ -19,5 +19,7 @@ Route::get('/', function () {
 
 Route::get('/articles', [App\Http\Controllers\ArticleController::class, 'index']);
 Route::POST('/articles', [App\Http\Controllers\ArticleController::class, 'store']);
-Route::GET('/articles/{article}', [App\Http\Controllers\ArticleController::class, 'show']);
+Route::GET('/articles/{id}', [App\Http\Controllers\ArticleController::class, 'show']);
 Route::GET('/articles/create', [App\Http\Controllers\ArticleController::class, 'create']);
+
+// Route::resource('articles', App\Http\Controllers\ArticleController::class);

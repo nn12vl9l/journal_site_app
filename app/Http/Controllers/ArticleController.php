@@ -9,7 +9,13 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        $art = Article::find();
-        return view('art.index', ['art' => $art]);
+        $articles = Article::all();
+        return view('articles.index', ['articles' => $articles]);
+    }
+
+    public function show($id)
+    {
+        $articles = Article::find($id);
+        return view('articles.show', ['articles' => $articles]);
     }
 }
