@@ -15,7 +15,26 @@ class ArticleController extends Controller
 
     public function show($id)
     {
-        $articles = Article::find($id);
-        return view('articles.show', ['articles' => $articles]);
+        $article = Article::find($id);
+        return view('articles.show', ['article' => $article]);
+    }
+
+    public function create()
+    {
+        return view('articles.create');
+    }
+
+    public function store(Request $request)
+    {
+        $article = new Article;
+
+        $article->title = $request->title;
+        $article->body = $request->body;
+        $article->timestamps = false;
+
+        $article->save();
+
+        return redirect('/articles');
+
     }
 }
