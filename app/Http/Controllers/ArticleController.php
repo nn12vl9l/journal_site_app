@@ -35,6 +35,32 @@ class ArticleController extends Controller
         $article->save();
 
         return redirect('/articles');
+    }
 
+    public function edit($id)
+    {
+        $article = Article::find($id);
+        return view('articles.edit', ['article' => $article]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $article = Article::find($id);
+
+        $article->title = $request->title;
+        $article->body = $request->body;
+        $article->timestamps = false;
+
+        $article->save();
+
+        return redirect('/articles');
+    }
+
+    public function destroy($id)
+    {
+        $article = Article::find($id);
+        $article->delete();
+
+        return redirect('/articles');
     }
 }
