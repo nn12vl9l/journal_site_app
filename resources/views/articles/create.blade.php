@@ -16,7 +16,7 @@
                 <b>{{ count($errors) }}件のエラーがあります。</b>
             </p>
             <ul>
-                @foreach($errors->all() as $error)
+                @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
             </ul>
@@ -31,7 +31,7 @@
         </p>
         <p>
             <label for="body">本文</label>
-            <textarea type="text" name="body" value="{{ old('body') }}"></textarea>
+            <input type="text" name="body" value="{{ old('body') }}">
         </p>
         <input type="submit" value="投稿">
     </form>
