@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
+use App\Http\Requests\ItemRequest;
 
 class ArticleController extends Controller
 {
@@ -24,7 +25,7 @@ class ArticleController extends Controller
         return view('articles.create');
     }
 
-    public function store(Request $request)
+    public function store(ItemRequest $request)
     {
         $article = new Article;
 
@@ -43,7 +44,7 @@ class ArticleController extends Controller
         return view('articles.edit', ['article' => $article]);
     }
 
-    public function update(Request $request, $id)
+    public function update(ItemRequest $request, $id)
     {
         $article = Article::find($id);
 

@@ -7,6 +7,18 @@
     <title>投稿論文編集</title>
 </head>
 <body>
+        @if ($errors->any())
+        <div class="error">
+            <p>
+                <b>{{ count($errors) }}件のエラーがあります。</b>
+            </p>
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <h1>投稿論文編集</h1>
     <form action="/articles/{{ $article->id }}" method="post">
     @csrf
@@ -14,11 +26,11 @@
     <input type="hidden" name="id" value="{{ $article->id }}">
     <p>
         <label for="title">論文タイトル</label>
-        <input type="text" name="title" value="{{ $article->title }}">
+        <input type="text" name="title" value="{{ old('title', $article->title) }}">
     </p>
     <p>
         <label for="body">本文</label>
-        <textarea name="body">{{ $article->body }}"></textarea>
+        <textarea name="body">{{ old('body', $article->body ) }}"></textarea>
     </p>
     <input type="submit" value="更新">
 </form>
