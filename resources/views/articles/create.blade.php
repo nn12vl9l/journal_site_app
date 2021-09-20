@@ -31,7 +31,7 @@
         </p>
         <p>
             <label for="body">本文</label>
-            <input type="text" name="body" value="{{ old('body') }}">
+            <textarea name=body>{{ old('body') }}</textarea>
         </p>
         <input type="submit" value="投稿">
     </form>
